@@ -1,6 +1,10 @@
 def avg_wt_time(n, process):
-	ans = sorted(sorted(process, key = lambda x : x[2]), key = lambda x : x[1])
-	# nested sorting first according to arrival time then according to burst time
+	ans = sorted(sorted(sorted(process, key = lambda x : x[2]),
+	                    key = lambda x : x[1]),
+	             key = lambda x:x[3])
+	# nested sorting first according to arrival time
+	# then according to burst time
+	# then according to priority
 	wt_time = 0
 	fin_time = 0
 	queue = []
@@ -11,7 +15,7 @@ def avg_wt_time(n, process):
 		queue.append((cur_pr[0],fin_time))
 		wt_time += wt_time + burst_time
 	queue.append((ans[-1][0],ans[-1][1]+fin_time))
-	print(queue)
+	print(queue) # printing are queue
 	print("Average waiting time is " + str(wt_time//n))
 
 if __name__ == '__main__':
