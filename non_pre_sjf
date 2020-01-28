@@ -1,0 +1,16 @@
+def avg_wt_time(n, process):
+	ans = sorted(sorted(process, key = lambda x : x[2]), key = lambda x : x[1])
+	wt_time = 0
+	for i in range(n-1):
+		cur_pr = ans[i]
+		wt_time += wt_time + cur_pr[1]
+	print("Average waiting time is " + str(wt_time//n))
+
+if __name__ == '__main__':
+	n = 4
+	process = [["p1", 6, 0, 1],
+	           ["p2", 8, 0, 2],
+	           ["p3", 7, 0, 3],
+	           ["p4", 3, 0, 4]]
+	# process_name, burst_time, arrival_time, priority
+	avg_wt_time(n, process)
